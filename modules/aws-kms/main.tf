@@ -16,7 +16,7 @@ data "aws_kms_key" "kms_key_data" {
 }
 
 resource "aws_iam_role" "iam_role" {
-  name                 = local.iam_role_name_def
+  name               = local.iam_role_name_def
   assume_role_policy = <<EOF
   {
     "Version": "2012-10-17",
@@ -80,9 +80,9 @@ resource "mongodbatlas_encryption_at_rest" "encryption" {
   project_id = var.project_id
 
   aws_kms_config {
-    enabled = true
+    enabled                = true
     customer_master_key_id = data.aws_kms_key.kms_key_data.id
-    region = var.kms_key_region
-    role_id = mongodbatlas_cloud_provider_access_authorization.auth.role_id
-  } 
+    region                 = var.kms_key_region
+    role_id                = mongodbatlas_cloud_provider_access_authorization.auth.role_id
+  }
 }

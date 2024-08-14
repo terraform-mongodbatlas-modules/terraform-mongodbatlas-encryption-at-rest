@@ -19,10 +19,10 @@ variable "iam_role_policy_name" {
 
 variable "aws_kms_key_arn" {
   description = "The ARN of the AWS KMS key (e.g., arn:aws:kms:us-east-1:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab)."
-  type = string
+  type        = string
 }
 
 variable "kms_key_region" {
   description = "The AWS region in which the AWS customer master key exists: CA_CENTRAL_1, US_EAST_1, US_EAST_2, US_WEST_1, US_WEST_2, SA_EAST_1."
-  type = string
+  type        = string
 }
