@@ -37,12 +37,12 @@ run "enable_encryption_at_rest_aws_kms_key" {
   }
 
   assert {
-    condition     = aws_iam_role.iam_role.name == "test-modules-tf-role-${run.create_project.project_id}"
+    condition     = aws_iam_role.iam_role.name == "mongodb-atlas-test-acc-tf-${run.create_project.project_id}"
     error_message = "Invalid role name"
   }
 
   assert {
-    condition     = aws_iam_role_policy.policy.name == "test-modules-tf-policy-${run.create_project.project_id}"
+    condition     = aws_iam_role_policy.policy.name == "mongodb-atlas-test-acc-tf-${run.create_project.project_id}"
     error_message = "Invalid policy name"
   }
 
