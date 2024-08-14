@@ -25,4 +25,8 @@ variable "aws_kms_key_arn" {
 variable "kms_key_region" {
   description = "The AWS region in which the AWS customer master key exists: CA_CENTRAL_1, US_EAST_1, US_EAST_2, US_WEST_1, US_WEST_2, SA_EAST_1."
   type        = string
+  validation {
+    condition     = upper(var.kms_key_region) == var.kms_key_region
+    error_message = "The value of the kms_key_region variable must be uppercase."
+  }
 }
