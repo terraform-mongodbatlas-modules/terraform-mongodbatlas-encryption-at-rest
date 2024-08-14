@@ -30,7 +30,7 @@ run "enable_encryption_at_rest_aws_kms_key" {
 
   variables {
     project_id           = run.create_project.project_id
-    aws_kms_key_arn      = "arn:aws:kms:us-east-2:358363220050:key/e7d5fac2-473e-470d-bed4-e2b05cb15311"
+    aws_kms_key_arn      = "arn:aws:kms:us-east-2:358363220050:key/b6a1d91b-59ad-4cb8-9d15-64175ab4791b"
     iam_role_name        = "test-modules-tf-role-${run.create_project.project_id}"
     iam_role_policy_name = "test-modules-tf-policy-${run.create_project.project_id}"
     kms_key_region       = "US_EAST_2"
