@@ -3,12 +3,12 @@ resource "aws_kms_key" "key" {
 }
 
 module "aws-kms-key" {
-  source        = "../../modules/aws-kms"
-  project_id      = var.project_id
-  aws_kms_key_arn = aws_kms_key.key.arn
-  iam_role_name = "iam-role-example-name"
+  source               = "../../modules/aws-kms"
+  project_id           = var.project_id
+  aws_kms_key_arn      = aws_kms_key.key.arn
+  iam_role_name        = "iam-role-example-name"
   iam_role_policy_name = "iam-role-policy-example-name"
-  kms_key_region  = "US_EAST_2" # assuming the KMS key was created in AWS region us-east-2
+  kms_key_region       = "US_EAST_2" # assuming the KMS key was created in AWS region us-east-2
 }
 
 resource "mongodbatlas_advanced_cluster" "cluster" {
