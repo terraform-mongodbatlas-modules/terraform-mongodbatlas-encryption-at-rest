@@ -4,8 +4,9 @@ _Note: you can see the full source code in the [github repository](https://githu
 
 This example sets up encryption at rest using an AWS KMS for your Atlas Project. Specifically, it does the following: 
 - Creates encryption key in AWS KMS.
-- Creates an IAM role and policy so that Atlas can access the key.
-- Enables encryption at rest for the Atlas Project.
+- Using the aws-kms submodule:
+    - Creates an IAM role and policy so that Atlas can access the key.
+    - Enables encryption at rest for the Atlas Project.
 - Creates a Cluster with encryption at rest enabled.
 
 ## Usage
@@ -42,7 +43,7 @@ $ terraform apply
 
 ## Considerations
 
-- Your AWS KMS Key policy must allow the IAM Role access, this can be done by::
+- Your AWS KMS Key policy should allow the IAM Role access. The following is an example of how to provide this permission:
 
 ```terraform
 {

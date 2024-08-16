@@ -1,5 +1,31 @@
 resource "aws_kms_key" "key" {
   description = "MongoDB Atlas KMS key."
+  policy      = <<-EOF
+  {
+    "Version": "2012-10-17",
+    "Id": "key-default-1",
+    "Statement": [
+      {
+        "Sid": "Allow use of the key by specific IAM user",
+        "Effect": "Allow",
+        "Principal": {
+          "AWS": "arn:aws:iam::{ACCOUNT}:role/IAM_EXECUTION_ROLE"
+        },
+        "Action": [
+          "kms:Decrypt",
+          "kms:Encrypt",
+          "kms:DescribeKey"
+        ],
+        "Resource": "*",
+        "Condition": {
+          "StringEquals": {
+              "aws:PrincipalArn": "arn:aws:iam::{ACCOUNT}:role/IAM_EXECUTION_ROLE"
+          }
+        }
+      }
+    ]
+  }
+  EOF
 }
 
 module "aws-kms-key" {
@@ -30,5 +56,5 @@ resource "mongodbatlas_advanced_cluster" "cluster" {
     }
   }
 
-  depends_on = [ module.aws-kms-key ]
+  depends_on = [module.aws-kms-key]
 }
