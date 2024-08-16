@@ -1,35 +1,35 @@
 resource "aws_kms_key" "key" {
   description = "MongoDB Atlas KMS key."
-  policy = jsonencode ({
-    "Version": "2012-10-17",
-    "Id": "key-default-1",
-    "Statement": [
+  policy = jsonencode({
+    "Version" : "2012-10-17",
+    "Id" : "key-default-1",
+    "Statement" : [
       {
-        "Sid": "Allow administration of the key",
-        "Effect": "Allow",
-        "Principal": {
-          "AWS": "arn:aws:iam::{AWS_ACCOUNT}:root"
+        "Sid" : "Allow administration of the key",
+        "Effect" : "Allow",
+        "Principal" : {
+          "AWS" : "arn:aws:iam::{AWS_ACCOUNT}:root"
         },
-        "Action": [
+        "Action" : [
           "kms:*"
         ],
-        "Resource": "*"
+        "Resource" : "*"
       },
       {
-        "Sid": "Allow use of the key by specific IAM user",
-        "Effect": "Allow",
-        "Principal": {
-          "AWS": module.aws-kms-key.role_arn
+        "Sid" : "Allow use of the key by specific IAM user",
+        "Effect" : "Allow",
+        "Principal" : {
+          "AWS" : module.aws-kms-key.role_arn
         },
-        "Action": [
+        "Action" : [
           "kms:Decrypt",
           "kms:Encrypt",
           "kms:DescribeKey"
         ],
-        "Resource": "*",
+        "Resource" : "*",
         "Condition" : {
           "StringEquals" : {
-            "aws:PrincipalArn": module.aws-kms-key.role_arn
+            "aws:PrincipalArn" : module.aws-kms-key.role_arn
           }
         }
       }
