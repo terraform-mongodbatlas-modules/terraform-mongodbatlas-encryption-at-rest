@@ -29,4 +29,6 @@ resource "mongodbatlas_advanced_cluster" "cluster" {
       }
     }
   }
+
+  depends_on = [ module.aws-kms-key ]
 }
