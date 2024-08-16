@@ -47,32 +47,43 @@ $ terraform apply
 
 ```terraform
 {
-  "Statement": [
-      // other statements
+  "Version": "2012-10-17",
+    "Id": "key-default-1",
+    "Statement": [
       {
-          "Sid": "Allow use of the key by specific IAM user",
-          "Action": [
-              "kms:Decrypt",
-              "kms:Encrypt",
-              "kms:DescribeKey"
-          ],
-          "Effect": "Allow",
-          "Principal": {
-              "AWS": "*"
-          },
-          "Resource": "*",
-          "Condition": {
-              "StringEquals": {
-                  "aws:PrincipalArn": "arn:aws:iam::{ACCOUNT}:role/IAM_EXECUTION_ROLE"
-              }
+        "Sid": "Allow administration of the key",
+        "Effect": "Allow",
+        "Principal": {
+          "AWS": "arn:aws:iam::{AWS_ACCOUNT}:root"
+        },
+        "Action": [
+          "kms:*"
+        ],
+        "Resource": "*"
+      },
+      {
+        "Sid": "Allow use of the key by specific IAM user",
+        "Effect": "Allow",
+        "Principal": {
+          "AWS": module.aws-kms-key.role_arn
+        },
+        "Action": [
+          "kms:Decrypt",
+          "kms:Encrypt",
+          "kms:DescribeKey"
+        ],
+        "Resource": "*",
+        "Condition" : {
+          "StringEquals" : {
+            "aws:PrincipalArn": module.aws-kms-key.role_arn
           }
+        }
       }
-  ],
-  "Version": "2012-10-17"
+    ]
 }
 ```
 
-_Note: the IAM Role ARN used in the aws:PrincipalArn attribute is the one created in the submodule._
+_Note: the IAM Role ARN used is the one created in the submodule._
 
 - If you want more information on how to enable encryption at rest in your cluster, refer to this [blog post](https://www.mongodb.com/docs/atlas/security-kms-encryption/).
 
