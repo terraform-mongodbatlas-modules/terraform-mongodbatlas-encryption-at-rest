@@ -9,7 +9,7 @@ resource "aws_kms_key" "key" {
         "Sid": "Allow use of the key by specific IAM user",
         "Effect": "Allow",
         "Principal": {
-          "AWS": "arn:aws:iam::{ACCOUNT}:role/IAM_EXECUTION_ROLE"
+          "AWS": ${module.aws-kms-key.role_arn}
         },
         "Action": [
           "kms:Decrypt",
@@ -19,7 +19,7 @@ resource "aws_kms_key" "key" {
         "Resource": "*",
         "Condition": {
           "StringEquals": {
-              "aws:PrincipalArn": "arn:aws:iam::{ACCOUNT}:role/IAM_EXECUTION_ROLE"
+              "aws:PrincipalArn": ${module.aws-kms-key.role_arn}
           }
         }
       }

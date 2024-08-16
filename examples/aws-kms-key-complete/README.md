@@ -72,6 +72,8 @@ $ terraform apply
 }
 ```
 
+_Note: the IAM Role ARN used in the aws:PrincipalArn attribute is the one created in the submodule._
+
 - If you want more information on how to enable encryption at rest in your cluster, refer to this [blog post](https://www.mongodb.com/docs/atlas/security-kms-encryption/).
 
 ## Resources
