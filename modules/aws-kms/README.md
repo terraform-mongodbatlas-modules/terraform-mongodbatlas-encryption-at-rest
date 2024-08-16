@@ -2,13 +2,13 @@
 
 This Terraform submodule sets up [encryption at rest](https://www.mongodb.com/docs/atlas/security-kms-encryption/) using an AWS KMS Key for your [MongoDB Atlas](https://www.mongodb.com/products/platform/atlas-database) Project.
 
-It creates the following resources:
+It creates the resources to perform the following actions:
 
-- A MongoDB Atlas Cloud Provider Access Setup.
-- An AWS IAM Role.
-- An AWS IAM Role Policy.
-- A MongoDB Atlas Cloud Provider Access Authorization.
-- Enables Encryption at Rest in the Atlas project.
+- Set up Access to Cloud Provider for MongoDB Atlas.
+- Create an AWS IAM Role.
+- Create an AWS IAM Role Policy.
+- Authorize MongoDB Atlas for Cloud Provider Access.
+- Enable Encryption at Rest in the Atlas project.
 
 You can find detailed information of the submodule's input and output variables in the [Terraform Public Registry]()
 
