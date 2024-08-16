@@ -2,13 +2,17 @@
 
 _Note: you can see the full source code in the [github repository](https://github.com/terraform-mongodbatlas-modules/terraform-mongodbatlas-encryption-at-rest/tree/main/examples/aws-kms-key-complete)_
 
-This example sets up encryption at rest using an AWS KMS for your Atlas Project. It creates the encryption key in AWS KMS, an IAM role and policy so that Atlas can access the key, and enables encryption at rest for the Atlas Project. Finally, it creates a Cluster with encryption at rest enabled.
+This example sets up encryption at rest using an AWS KMS for your Atlas Project. Specifically, it does the following: 
+- Creates encryption key in AWS KMS.
+- Creates an IAM role and policy so that Atlas can access the key.
+- Enables encryption at rest for the Atlas Project.
+- Creates a Cluster with encryption at rest enabled.
 
 ## Usage
 
 - Set the following variable: 
 
-    - `project_id`: ID of the Atlas project
+    - `project_id`: Unique 24-hexadecimal character string that identifies the Atlas project
 
 - Set the following environment variables:
 
@@ -38,7 +42,7 @@ $ terraform apply
 
 ## Considerations
 
-- In order to define the AWS KMS Key policy with the correct permissions, it should look like this:
+- Your AWS KMS Key policy must allow the IAM Role access, this can be done by::
 
 ```terraform
 {
@@ -58,7 +62,7 @@ $ terraform apply
           "Resource": "*",
           "Condition": {
               "StringEquals": {
-                  "aws:PrincipalArn": "arn:aws:iam::{ACCOUNT}:role/IAM_EXECUTION_ROLE" // optional clause to limit to your execution role only
+                  "aws:PrincipalArn": "arn:aws:iam::{ACCOUNT}:role/IAM_EXECUTION_ROLE"
               }
           }
       }
