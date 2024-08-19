@@ -10,7 +10,7 @@ It creates the resources to perform the following actions:
 - Authorize MongoDB Atlas for Cloud Provider Access.
 - Enable Encryption at Rest in the Atlas project.
 
-You can find detailed information of the submodule's input and output variables in the [Terraform Public Registry]()
+You can find detailed information of the submodule's input and output variables in the [Terraform Public Registry](https://registry.terraform.io/modules/terraform-mongodbatlas-modules/encryption-at-rest/mongodbatlas/latest)
 
 ## Usage 
 
@@ -40,7 +40,9 @@ The module creates the following resources:
 | [aws_iam_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
 | [aws_iam_role_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy) | resource |
 
+
 -> **NOTE:** Encryption at rest can only be enabled once per project.
+
 
 For more information, see the [MongoDB Atlas](https://registry.terraform.io/providers/mongodb/mongodbatlas/latest/docs) and [AWS](https://registry.terraform.io/providers/hashicorp/aws/latest/docs) Terraform providers documentation.
 
