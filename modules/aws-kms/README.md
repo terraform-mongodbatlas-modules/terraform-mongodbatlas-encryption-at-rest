@@ -41,7 +41,7 @@ The module creates the following resources:
 | [aws_iam_role_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy) | resource |
 
 
--> **NOTE:** Encryption at rest can only be enabled once per project.
+-> **NOTE:** Each project can only have a single module defining encryption at rest configuration.
 
 
 For more information, see the [MongoDB Atlas](https://registry.terraform.io/providers/mongodb/mongodbatlas/latest/docs) and [AWS](https://registry.terraform.io/providers/hashicorp/aws/latest/docs) Terraform providers documentation.
