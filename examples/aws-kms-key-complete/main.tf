@@ -38,7 +38,7 @@ resource "aws_kms_key" "key" {
 }
 
 module "aws-kms-key" {
-  source               = "../../modules/aws-kms"
+  source               = "terraform-mongodbatlas-modules/encryption-at-rest/mongodbatlas//modules/aws-kms"
   project_id           = var.project_id
   aws_kms_key_arn      = aws_kms_key.key.arn
   iam_role_name        = "iam-role-example-name"
