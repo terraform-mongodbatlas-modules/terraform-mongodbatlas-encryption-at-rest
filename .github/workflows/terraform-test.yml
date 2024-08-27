@@ -7,7 +7,7 @@ on:
   pull_request:
   workflow_dispatch:
   schedule:
-    - cron: "*/10 * * * *" # this is a temporary scheduling that runs every 10 min to test that the slack notification is sent correctly. Once we verify it, the scheduling will be every day at midnight
+    - cron: "0 0 * * *" # every day at midnight
 
 jobs:
   tf-test:
@@ -69,5 +69,5 @@ jobs:
               ]
             }
         env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL_TEST }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
