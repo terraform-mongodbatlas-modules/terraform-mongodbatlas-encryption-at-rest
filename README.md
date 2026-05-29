@@ -1,8 +1,6 @@
 # Encryption At Rest Terraform Module
 
-# This module has been deprecated
-
-This repository is no longer maintained. Its functionality has been superseded by the [MongoDB Atlas AWS Module](https://registry.terraform.io/modules/terraform-mongodbatlas-modules/atlas-aws/mongodbatlas/latest) (`terraform-mongodbatlas-modules/atlas-aws/mongodbatlas`), which provides encryption at rest with AWS KMS along with additional AWS integrations including PrivateLink, cloud provider access, and backup export to S3.
+> **Archived:** This repository is no longer maintained. Use the [MongoDB Atlas AWS module](https://github.com/terraform-mongodbatlas-modules/terraform-mongodbatlas-atlas-aws) from the [terraform-mongodbatlas-modules](https://github.com/terraform-mongodbatlas-modules/) organization instead. For up-to-date Terraform examples and reference implementations, see [atlas-examples](https://github.com/terraform-mongodbatlas-modules/atlas-examples).
 
 ## Migration
 
